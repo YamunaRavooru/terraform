@@ -10,7 +10,7 @@ resource "aws_instance" "expense" {
 
 }
 resource "aws_security_group" "allow_tls" {
-  name        = "allow"
+  name        = "allow_tls"
   description = "allow all tls inbount traffiv and outboud traffic"
   ingress {
     from_port   = var.to_po
@@ -26,5 +26,7 @@ resource "aws_security_group" "allow_tls" {
     cidr_blocks = var.cidr_blocks
 
   }
-  tags = merge(var.Sg_tags,var.common_tags) 
+  tags = {
+    Name ="allow"
+  }
 } 
